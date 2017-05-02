@@ -9,8 +9,8 @@ import java.util.List;
 /**
  * Created by ericweidman on 5/2/17.
  */
-public interface DrawingRepository extends CrudRepository<Drawing, Integer>{
+public interface DrawingRepository extends CrudRepository<Drawing, Integer> {
 
-List<Drawing> findAllByUserId (User id);
+    List<Drawing> findAllByUserId(User id);
 
 }

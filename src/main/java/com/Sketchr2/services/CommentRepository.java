@@ -9,7 +9,7 @@ import java.util.List;
 /**
  * Created by ericweidman on 5/2/17.
  */
-public interface CommentRepository  extends CrudRepository<Comment, Integer> {
+public interface CommentRepository extends CrudRepository<Comment, Integer> {
 
     List<Comment> findAllByDrawingId(int id);
 
