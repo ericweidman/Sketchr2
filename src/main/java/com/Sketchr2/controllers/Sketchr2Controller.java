@@ -27,7 +27,7 @@ public class Sketchr2Controller {
     private CommentRepository commentRepository;
 
     @RequestMapping(path = "/create-user")
-    private void createUser(@RequestBody User userSubmittedViaForm, HttpSession userSession) throws Exception {
+    private String createUser(@RequestBody User userSubmittedViaForm, HttpSession userSession) throws Exception {
 
         User saveUser = new User();
         User checkIfExists = userRepository.findByUserName(userSubmittedViaForm.getUserName());
@@ -44,13 +44,15 @@ public class Sketchr2Controller {
         else if (checkIfExists != null) {
             throw new Exception("Username already in use");
         } else {
-            saveUser.setUserName(userSubmittedViaForm.getUserName());
+            saveUser.setUserName(userSubmittedViaForm.getUserName().toLowerCase());
             //Hashes password before saving to database.
             saveUser.setPasswordHash(PasswordStorage.createHash(userSubmittedViaForm.getPasswordHash()));
             //Saves user to to database.
             userRepository.save(saveUser);
             //Saves a session based on the username.
             userSession.setAttribute("userName", saveUser.getUserName());
+            System.out.println("User Created");
+            return "User Created.";
         }
     }
 
@@ -58,7 +60,7 @@ public class Sketchr2Controller {
     public void loginUser(@RequestBody User userSubmittedViaForm, HttpSession userSession) throws Exception {
 
         //Finds the user in database via the submitted username.
-        User checkUserValidity = userRepository.findByUserName(userSubmittedViaForm.getUserName());
+        User checkUserValidity = userRepository.findByUserName(userSubmittedViaForm.getUserName().toLowerCase());
 
         //Checks for username submission for null or empty string.
         if (userSubmittedViaForm.getUserName() == null || userSubmittedViaForm.getUserName().trim().length() == 0) {
@@ -79,5 +81,9 @@ public class Sketchr2Controller {
             //Saves session by valid username.
             userSession.setAttribute("userName", checkUserValidity.getUserName());
         }
+    }
+    @RequestMapping(path = "/logout")
+    public void logout(HttpSession userSession){
+        userSession.invalidate();
     }
 }
