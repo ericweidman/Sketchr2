@@ -49,3 +49,17 @@ $('#loginUser').submit(function(event) {
     }
   })
 })
+
+$('#hideCreate').click(function() {
+  $('#createUser').toggle();
+  $('#loginUser').toggle();
+  $('#hideCreate').toggle();
+  $('#alreadyhasaccount').toggle();
+});
+
+$('#alreadyhasaccount').click(function() {
+  $('#createUser').toggle();
+  $('#loginUser').toggle();
+  $('#hideCreate').toggle();
+  $('#alreadyhasaccount').toggle();
+})
