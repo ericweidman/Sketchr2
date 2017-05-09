@@ -37,7 +37,7 @@ $('#loginUser').submit(function(event) {
     dataType: 'text',
     success: function(data) {
       console.log(data);
-      window.location.href = "homepage.html";
+      window.location.href = "canvas.html";
     },
     error: function(error) {
       console.log(error.responseText);
@@ -48,4 +48,18 @@ $('#loginUser').submit(function(event) {
       },
     }
   })
+})
+
+$('#hideCreate').click(function() {
+  $('#createUser').toggle();
+  $('#loginUser').toggle();
+  $('#hideCreate').toggle();
+  $('#alreadyhasaccount').toggle();
+});
+
+$('#alreadyhasaccount').click(function() {
+  $('#createUser').toggle();
+  $('#loginUser').toggle();
+  $('#hideCreate').toggle();
+  $('#alreadyhasaccount').toggle();
 })

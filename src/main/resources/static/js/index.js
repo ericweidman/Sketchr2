@@ -37,7 +37,7 @@ $('#loginUser').submit(function(event) {
     dataType: 'text',
     success: function(data) {
       console.log(data);
-      window.location.href = "homepage.html";
+      window.location.href = "canvas.html";
     },
     error: function(error) {
       console.log(error.responseText);

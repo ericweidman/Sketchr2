@@ -1,28 +1,41 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 
 <head>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="css/index.css" media="screen" charset="utf-8">
   <link rel="stylesheet" href="css/animate.css">
-  <link rel="stylesheet" href="css/bootstrap.css">
+  <title>SKETCHr</title>
 </head>
-<title>SKETCHr</title>
 
 <body>
 
-  <form id="createUser">
-    <input type="text" name="newUser" placeholder="Username" pattern="[A-Za-z]{4,18}" autocomplete="off" title="No spaces, Letters only. 4-18 characters." autofocus="autofoucs">
-    <input type="text" name="newPassword" placeholder="Password" minlength="4" autocomplete="off">
-    <input type="submit" name="submitNewUser" value="Sign Up!">
-  </form>
-
-
-  <form id="loginUser">
-    <input type="text" name="loginUser" placeholder="Username" autocomplete="off">
-    <input type="text" name="loginPassword" placeholder="Password" autocomplete="off">
-    <input type="submit" name="loginNewUser" value="Log-in!">
-  </form>
-
+  <div class="center">
+    <form id="createUser" class="formclass">
+      <br>
+      Sign up and start creating and sharing sketches.
+      <br><br>
+      <input type="text" name="newUser" placeholder="Username" pattern="[A-Za-z]{4,18}" autocomplete="off" title="No spaces, Letters only. 4-18 characters." autofocus="autofoucs">
+      <br><br>
+      <input type="password" name="newPassword" placeholder="Password" minlength="4" autocomplete="off">
+      <br><br>
+      <input type="submit" name="submitNewUser" value="Sign Up!">
+      <br><br>
+    </form>
+    <form id="loginUser" class="formclass">
+      <br>
+      Login into your SKETCHr account!
+      <br><br>
+      <input type="text" name="loginUser" placeholder="Username" autocomplete="off">
+      <br><br>
+      <input type="password" name="loginPassword" placeholder="Password" autocomplete="off">
+      <br><br>
+      <input type="submit" name="loginNewUser" value="Log-in!">
+      <br><br>
+    </form>
+    <button id="hideCreate">Click here to sign up!</button>
+    <button id="alreadyhasaccount">Already have an account?</button>
+  </div>
 
 </body>
 <script src="js/jquery-3.2.1.js" charset="utf-8"></script>

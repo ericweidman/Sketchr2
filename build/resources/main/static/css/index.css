@@ -1,3 +1,80 @@
 body {
+  background-color: lightgray;
+  width: 100%;
+}
+
+input[type=submit] {
   background-color: black;
+  border: 2px solid white;
+  text-align: center;
+  color: white;
+  font-size: 15px;
+  padding: 6px 5px;
+  text-decoration: none;
+  border-radius: 11px;
+  transition-duration: .4s;
+  width: 10%;
+}
+
+input[type=submit]:hover {
+  background-color: white;
+  color: black;
+}
+
+input[type=text] {
+  text-align: center;
+  font-size: 18px;
+  width: 15%;
+}
+
+input[type=password] {
+  text-align: center;
+  font-size: 18px;
+  width: 15%;
+}
+
+
+.center {
+  width: inherit;
+  height: 25%;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  margin: auto;
+  background-color: inherit;
+  text-align: center;
+  display: block;
+}
+
+#createUser {
+  width: inherit;
+  display: none;
+}
+
+#loginUser {
+  width: inherit;
+  display: inline-block;
+}
+
+form {
+  display: inline-block
+}
+
+button {
+  border: none;
+  width: 10%;
+  height: 5%;
+  background-color: inherit;
+  outline: none;
+  display: inline-block;
+}
+
+#hideCreate {
+  display: inline-block;
+}
+
+#alreadyhasaccount {
+  display: none;
 }

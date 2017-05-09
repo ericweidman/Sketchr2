@@ -27,6 +27,13 @@ input[type=text] {
   width: 15%;
 }
 
+input[type=password] {
+  text-align: center;
+  font-size: 18px;
+  width: 15%;
+}
+
+
 .center {
   width: inherit;
   height: 25%;
@@ -36,7 +43,7 @@ input[type=text] {
   left: 0;
   right: 0;
   margin: auto;
-  background-color: white;
+  background-color: inherit;
   text-align: center;
   display: block;
 }
