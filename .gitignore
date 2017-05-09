@@ -53,3 +53,4 @@ crashlytics-build.properties
 node_modules
 /public/
 /build/
+/.gradle/buildOutputCleanup/
