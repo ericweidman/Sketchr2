@@ -1,0 +1,38 @@
+body {
+  background-color: lightgray;
+  width: 100%;
+}
+
+#logout {
+  background-color: black;
+  border: 2px solid white;
+  text-align: center;
+  color: white;
+  font-size: 15px;
+  padding: 6px 5px;
+  text-decoration: none;
+  border-radius: 11px;
+  transition-duration: .4s;
+  width: 10%;
+}
+
+#logout:hover {
+  background-color: white;
+  color: black;
+}
+
+#canvasID:hover {
+  cursor: cell;
+}
+
+#canvasID:active {
+  cursor: cell;
+}
+
+#canvas {
+  display: inline-block;
+  border: 1px solid black;
+  float: left;
+  margin: 1% 0 0 5%;
+  background-color: white;
+}
