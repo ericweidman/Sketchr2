@@ -1,16 +1,24 @@
 package com.Sketchr2.controllers;
 
+import com.Sketchr2.entities.Drawing;
 import com.Sketchr2.entities.User;
 import com.Sketchr2.services.CommentRepository;
 import com.Sketchr2.services.DrawingRepository;
 import com.Sketchr2.services.UserRepository;
 import com.Sketchr2.utils.PasswordStorage;
+import org.apache.tomcat.util.codec.binary.Base64;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import javax.imageio.ImageIO;
 import javax.servlet.http.HttpSession;
+import java.awt.*;
+import java.awt.image.BufferedImage;
+import java.awt.image.RenderedImage;
+import java.io.File;
+import java.io.FileOutputStream;
 
 /**
  * Created by ericweidman on 5/2/17.
@@ -82,8 +90,26 @@ public class Sketchr2Controller {
             userSession.setAttribute("userName", checkUserValidity.getUserName());
         }
     }
+
     @RequestMapping(path = "/logout")
-    public void logout(HttpSession userSession){
+    public void logout(HttpSession userSession) {
         userSession.invalidate();
+    }
+
+    @RequestMapping(path = "save-image")
+    public void saveImage(String title, byte[] base64result, HttpSession userSession) throws Exception {
+
+        String userName = (String) userSession.getAttribute("userName");
+
+        if (userName == null) {
+            throw new Exception("You must be logged in to save images.");
+        }
+
+
+
+        byte[] imageByte= Base64.decodeBase64(base64result);
+        new FileOutputStream("/Users/ericweidman/IdeaProjects/Sketchr2/src/main/resources/static/img/image.png").write(imageByte);
+
+
     }
 }
