@@ -10,3 +10,7 @@ $('#logout').click(function() {
     }
   });
 })
+$('#canvas').click(function() {
+      window.location.href = "canvas.html";
+    }
+  );
