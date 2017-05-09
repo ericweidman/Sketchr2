@@ -18,7 +18,7 @@ public class Drawing {
     private String title;
 
     @Column(nullable = false, length = 10485760)
-    private String filelocation;
+    private String fileName;
 
     @ManyToOne
     private User user;
@@ -26,9 +26,9 @@ public class Drawing {
     public Drawing() {
     }
 
-    public Drawing(String title, String filelocation, User user) {
+    public Drawing(String title, String fileName, User user) {
         this.title = title;
-        this.filelocation = filelocation;
+        this.fileName = fileName;
         this.user = user;
     }
 
@@ -44,12 +44,12 @@ public class Drawing {
         this.title = title;
     }
 
-    public String getFilelocation() {
-        return filelocation;
+    public String getFileName() {
+        return fileName;
     }
 
-    public void setFilelocation(String filelocation) {
-        this.filelocation = filelocation;
+    public void setFileName(String fileName) {
+        this.fileName = fileName;
     }
 
     public User getUser() {

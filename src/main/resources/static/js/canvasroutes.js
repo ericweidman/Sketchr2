@@ -11,6 +11,11 @@ $('#logout').click(function() {
   });
 })
 
+$('#homepage').click(function() {
+      window.location.href = "homepage.html";
+    }
+  );
+
 
 $('#save').click(function(event) {
   event.preventDefault();

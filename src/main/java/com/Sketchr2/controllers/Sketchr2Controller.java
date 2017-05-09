@@ -92,24 +92,22 @@ public class Sketchr2Controller {
         userSession.invalidate();
     }
 
-    @RequestMapping(path = "save-image")
+    @RequestMapping(path = "/save-image")
     public void saveImage(String title, String base64result, HttpSession userSession) throws Exception {
 
         String userName = (String) userSession.getAttribute("userName");
+        User user = userRepository.findByUserName(userName);
+        byte[] imageByte = Base64.decodeBase64(base64result);
+        String fileName = userName + "_" +  title + ".png";
+        String savelocation = "public/";
 
         if (userName == null) {
             throw new Exception("You must be logged in to save images.");
         }
 
-        String filelocation = userName + "_" +  title + ".png";
-        String savelocation = "public/";
-
-        User user = userRepository.findByUserName(userName);
-        Drawing newDrawing = new Drawing(title, filelocation, user) ;
+        Drawing newDrawing = new Drawing(title, fileName, user) ;
         drawingRepository.save(newDrawing);
-        byte[] imageByte = Base64.decodeBase64(base64result);
-        new FileOutputStream(savelocation + filelocation).write(imageByte);
-
+        new FileOutputStream(savelocation + fileName).write(imageByte);
 
     }
 }
