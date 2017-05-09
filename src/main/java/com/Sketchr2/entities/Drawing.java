@@ -18,7 +18,7 @@ public class Drawing {
     private String title;
 
     @Column(nullable = false, length = 10485760)
-    private byte[] drawingAsString;
+    private String filelocation;
 
     @ManyToOne
     private User user;
@@ -26,9 +26,9 @@ public class Drawing {
     public Drawing() {
     }
 
-    public Drawing(String title, byte[] drawingAsString, User user) {
+    public Drawing(String title, String filelocation, User user) {
         this.title = title;
-        this.drawingAsString = drawingAsString;
+        this.filelocation = filelocation;
         this.user = user;
     }
 
@@ -44,12 +44,12 @@ public class Drawing {
         this.title = title;
     }
 
-    public byte[] getDrawingAsString() {
-        return drawingAsString;
+    public String getFilelocation() {
+        return filelocation;
     }
 
-    public void setDrawingAsString(byte[] drawingAsString) {
-        this.drawingAsString = drawingAsString;
+    public void setFilelocation(String filelocation) {
+        this.filelocation = filelocation;
     }
 
     public User getUser() {

@@ -12,12 +12,8 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import javax.imageio.ImageIO;
+
 import javax.servlet.http.HttpSession;
-import java.awt.*;
-import java.awt.image.BufferedImage;
-import java.awt.image.RenderedImage;
-import java.io.File;
 import java.io.FileOutputStream;
 
 /**
@@ -97,7 +93,7 @@ public class Sketchr2Controller {
     }
 
     @RequestMapping(path = "save-image")
-    public void saveImage(String title, byte[] base64result, HttpSession userSession) throws Exception {
+    public void saveImage(String title, String base64result, HttpSession userSession) throws Exception {
 
         String userName = (String) userSession.getAttribute("userName");
 
@@ -105,10 +101,14 @@ public class Sketchr2Controller {
             throw new Exception("You must be logged in to save images.");
         }
 
+        String filelocation = userName + "_" +  title + ".png";
+        String savelocation = "public/";
 
-
-        byte[] imageByte= Base64.decodeBase64(base64result);
-        new FileOutputStream("/Users/ericweidman/IdeaProjects/Sketchr2/src/main/resources/static/img/image.png").write(imageByte);
+        User user = userRepository.findByUserName(userName);
+        Drawing newDrawing = new Drawing(title, filelocation, user) ;
+        drawingRepository.save(newDrawing);
+        byte[] imageByte = Base64.decodeBase64(base64result);
+        new FileOutputStream(savelocation + filelocation).write(imageByte);
 
 
     }
