@@ -8,13 +8,14 @@ import com.Sketchr2.services.UserRepository;
 import com.Sketchr2.utils.PasswordStorage;
 import org.apache.tomcat.util.codec.binary.Base64;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 
 import javax.servlet.http.HttpSession;
+import java.io.File;
 import java.io.FileOutputStream;
+import java.nio.file.Files;
+import java.util.List;
 
 /**
  * Created by ericweidman on 5/2/17.
@@ -87,27 +88,57 @@ public class Sketchr2Controller {
         }
     }
 
-    @RequestMapping(path = "/logout")
-    public void logout(HttpSession userSession) {
-        userSession.invalidate();
-    }
-
     @RequestMapping(path = "/save-image")
     public void saveImage(String title, String base64result, HttpSession userSession) throws Exception {
 
         String userName = (String) userSession.getAttribute("userName");
         User user = userRepository.findByUserName(userName);
+
+        //Saves images to the public folder.
         byte[] imageByte = Base64.decodeBase64(base64result);
-        String fileName = userName + "_" +  title + ".png";
+        String fileName = userName + "_" + title + ".png";
         String savelocation = "public/";
 
         if (userName == null) {
             throw new Exception("You must be logged in to save images.");
         }
 
-        Drawing newDrawing = new Drawing(title, fileName, user) ;
+        //Saves image data to database.
+        Drawing newDrawing = new Drawing(title, fileName, user);
         drawingRepository.save(newDrawing);
         new FileOutputStream(savelocation + fileName).write(imageByte);
+    }
+
+    @RequestMapping(path = "/user-images")
+    public List<Drawing> userImages(HttpSession userSession) {
+
+        String userName = (String) userSession.getAttribute("userName");
+        User user = userRepository.findByUserName(userName);
+        return drawingRepository.findAllByUserId(user.getId());
 
     }
+
+    @RequestMapping(path = "delete-image/{id}", method = RequestMethod.DELETE)
+    public void deleteImage(@PathVariable("id") int id, HttpSession userSession) {
+
+
+        Drawing deleteimage = drawingRepository.findOne(id);
+        drawingRepository.delete(id);
+        File delete = new File("public/" + deleteimage.getFileName());
+        boolean bool;
+
+        try {
+            bool = delete.delete();
+            System.out.println("File deleted " + bool);
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    @RequestMapping(path = "/logout")
+    public void logout(HttpSession userSession) {
+        userSession.invalidate();
+    }
+
 }

@@ -11,6 +11,6 @@ import java.util.List;
  */
 public interface DrawingRepository extends CrudRepository<Drawing, Integer> {
 
-    List<Drawing> findAllByUserId(User id);
+    List<Drawing> findAllByUserId(int id);
 
 }
