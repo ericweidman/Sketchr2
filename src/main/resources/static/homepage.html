@@ -1,20 +1,40 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="css/homepage.css" media="screen" charset="utf-8">
   <link rel="stylesheet" href="css/animate.css">
-  <link rel="stylesheet" href="css/bootstrap.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
   <title>SKETCHr</title>
 </head>
 <body>
-  <button id="logout">Logout</button>
-  <button id="canvas">Canvas</button>
+
+  <div class="w3-sidebar w3-bar-block w3-card-2 w3-animate-left" style="display:none" id="leftMenu">
+    <button onclick="closeLeftMenu()" class="w3-bar-item w3-button w3-large">Close &times;</button>
+    <button id="canvas" class="custombuttons">Canvas</a>
+    <button id="gallery" class="custombuttons">Gallery</a>
+    <button id="friends" class="custombuttons">Friends</a>
+    <button id="account" class="custombuttons">Account</a>
+    <button id="logout" class="custombuttons">Logout</a>
+  </div>
+
+  <div class="w3-black">
+    <button class="w3-button w3-black w3-xlarge w3-left" onclick="openLeftMenu()">&#9776;</button>
+    <div class="w3-container">
+    </div>
+  </div>
+
+  <div class="w3-container">
+  </div>
+
+
 
 <div id="images"></div>
 
 
 </body>
-
+<script src="js/sidebar.js" charset="utf-8"></script>
 <script src="js/jquery-3.2.1.js" charset="utf-8"></script>
 <script src="js/homepage.js" charset="utf-8"></script>
 </html>

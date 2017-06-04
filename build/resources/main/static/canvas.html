@@ -1,33 +1,53 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="css/canvas.css" media="screen" charset="utf-8">
   <link rel="stylesheet" href="css/animate.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
   <title>SKETCHr</title>
 </head>
-
 <body>
 
-  <button id="logout">Logout</button>
-  <button id="homepage">Homepage</button>
-  <div id=canvasID>
-    <button class="statusButton icon" type="button" id="marker" value='marker'><i class="fa fa-paint-brush"></i></button>
-    <button class="statusButton icon" type="button" id="spray" value="spray"><i class="fa fa-tint" aria-hidden="true"></i></button>
-    <button class="statusButton icon" type="button" id="eraser" value='eraser'><i class="fa fa-eraser"></i></button>
-    <input class='statusButton' type='button' value='Undo' id='undo'>
-    <input id="slider" type="range" min="2" max="200" step="2" value="10" />
-    <input class='opacity' type="range" min="0" max="1" step="0.1" value="1" />
-    <input class='clear' type='button' id='clear' value='clear all'>
-    <input id='colorPick' type="color" />
-    <input class='nameImg' type="text" name="name" placeholder="name this image">
-    <input class='button-user' type='button' id='save' value='save'>
+<div class="w3-sidebar w3-bar-block w3-card-2 w3-animate-left" style="display:none" id="leftMenu">
+  <button onclick="closeLeftMenu()" class="w3-bar-item w3-button w3-large">Close &times;</button>
+  <a href="#" id="homepage" class="w3-bar-item w3-button">Homepage</a>
+  <a href="#" id="gallery" class="w3-bar-item w3-button">Gallery</a>
+  <a href="#" id="friends" class="w3-bar-item w3-button">Friends</a>
+  <a href="#" id="account" class="w3-bar-item w3-button">Account</a>
+  <a href="#" id="logout" class="w3-bar-item w3-button">Logout</a>
+</div>
 
+<div class="w3-sidebar w3-bar-block w3-card-2 w3-animate-right" style="display:none;right:0;" id="rightMenu">
+  <button onclick="closeRightMenu()" class="w3-bar-item w3-button w3-large">Close &times;</button>
+  Tools
+  <button class="w3-bar-item w3-button" type="button" id="marker" value='marker'><i class="fa fa-paint-brush">Marker</i></button>
+  <button class="w3-bar-item w3-button" type="button" id="spray" value="spray"><i class="fa fa-tint" aria-hidden="true">Spraypaint</i></button>
+  <button class="w3-bar-item w3-button" type="button" id="eraser" value='eraser'><i class="fa fa-eraser"></i></button>
+  <input id="slider" type="range" min="2" max="200" step="2" value="10" />
+  <input class='opacity' type="range" min="0" max="1" step="0.1" value="1" />
+  <input id="undo" class="w3-bar-item w3-button">Undo</a>
+  <input type='button' id='clear' value='Clear all'>
+  <input id='colorPick' type="color" />
+  <input class='nameImg' type="text" name="name" placeholder="name this image">
+  <input class="w3-bar-item w3-button" type='button' id='save' value='Save'>
+
+</div>
+
+<div class="w3-black">
+  <button class="w3-button w3-black w3-xlarge w3-left" onclick="openLeftMenu()">&#9776;</button>
+  <button class="w3-button w3-black w3-xlarge w3-right" onclick="openRightMenu()">&#9776;</button>
+  <div class="w3-container">
+  </div>
+</div>
+
+<div class="w3-container">
+</div>
 
 </body>
 <script src="js/jquery-3.2.1.js" charset="utf-8"></script>
+<script src="js/sidebar.js" charset="utf-8"></script>
 <script src="js/canvas.js" charset="utf-8"></script>
 <script src="js/canvasroutes.js" charset="utf-8"></script>
 

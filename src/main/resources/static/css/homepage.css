@@ -1,4 +1,44 @@
-body {
+.custombuttons {
+  background-color: black;
+  border: 2px solid white;
+  color: white;
+  font-size: 15px;
+  text-decoration: none;
+  border-radius: 11px;
+  transition-duration: .4s;
+  width: 10%;
+  height: 50px;
+  line-height: 50px;
+  display: inline-block;
+
+
+}
+.custombuttons:hover {
+  background-color: white;
+  color: black;
+}
+
+/*body {
   background-color: lightgray;
   width: 100%;
 }
+.fixedheader {
+    font-size: 28;
+    position: fixed;
+    top: 0px;
+    left: -20px;
+    width: 100%;
+    color: #CCC;
+    background: #333;
+    padding: 10px;
+    text-align: right;
+}
+#text{
+  padding-top: 2px;
+  left: 3%;
+  position: absolute;
+  font-size: 18px;
+  font-family: sans-serif;
+  color: white;
+
+}*/

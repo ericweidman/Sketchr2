@@ -1,22 +1,31 @@
-body {
+/*body {
   background-color: lightgray;
-  width: 100%;
 }
 
-#logout {
+.fixedheader {
+  font-size: 28;
+  position: fixed;
+  top: 0px;
+  left: -20px;
+  width: 100%;
+  color: #CCC;
+  background: #333;
+  padding: 10px;
+  text-align: right;
+}
+
+.custombuttons {
   background-color: black;
   border: 2px solid white;
-  text-align: center;
   color: white;
   font-size: 15px;
-  padding: 6px 5px;
   text-decoration: none;
   border-radius: 11px;
   transition-duration: .4s;
   width: 10%;
 }
 
-#logout:hover {
+.custombuttons:hover {
   background-color: white;
   color: black;
 }
@@ -30,9 +39,36 @@ body {
 }
 
 #canvas {
-  display: inline-block;
   border: 1px solid black;
   float: left;
-  margin: 1% 0 0 5%;
+  margin: 0 0 0 0;
   background-color: white;
+  position: absolute;
+  left: 10%;
+  top: 16%;
 }
+
+#text {
+  padding-top: 2px;
+  left: 3%;
+  position: absolute;
+  font-size: 18px;
+  font-family: sans-serif;
+  color: white;
+}
+
+#container {
+    width: 100%;
+    margin: 0 auto;
+}
+
+#sidebar {
+    width: 33%;
+    background-color: black;
+    float: right;
+    margin-top: 25%;
+}
+
+#content {
+    overflow: hidden;
+}*/
